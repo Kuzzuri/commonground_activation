@@ -12,7 +12,7 @@ passwordBtn.addEventListener("click", () => {
     const passwordTwo = document.getElementById('passwordTwo').value
     if(passwordOne == passwordTwo){
         if(passwordOne.length > 7 && passwordTwo.length > 7 && regex.test(passwordOne)){
-            sendPasswordChange()
+            sendPasswordChange(passwordOne)
         }else{
             resultText.textContent = "Password must be longer than 8 characters and contain special characters!"
         }
@@ -49,7 +49,7 @@ function redirectToApp(){
     }, 1500)
 }
 
-async function sendPasswordChange(){
+async function sendPasswordChange(password){
         try{
             let response = await fetch('https://commongroundapi-production.up.railway.app/user/password_change/', {
                 method: 'POST',
@@ -58,7 +58,8 @@ async function sendPasswordChange(){
                 },
                 body: JSON.stringify({
                     uid: uid,
-                    token: token
+                    token: token,
+                    password: password
                 })
             })
             if(response.ok){
