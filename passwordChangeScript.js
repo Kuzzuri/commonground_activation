@@ -7,7 +7,6 @@ const resultText = document.getElementById("resultText")
 
 
 passwordBtn.addEventListener("click", () => {
-    console.log(1)
     const passwordOne = document.getElementById('passwordOne').value
     const passwordTwo = document.getElementById('passwordTwo').value
     if(passwordOne == passwordTwo){
@@ -51,7 +50,7 @@ function redirectToApp(){
 
 async function sendPasswordChange(password){
         try{
-            let response = await fetch('https://commongroundapi-production.up.railway.app/user/password_change/', {
+            let response = await fetch('https://commongroundapi-production.up.railway.app/user/change_password/', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
